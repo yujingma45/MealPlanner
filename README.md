@@ -1,2 +1,2 @@
 # MealPlanner
-<img src="./assets/logo.png" width="200" />
+<img src="./assets/logo.png" width="500" />
