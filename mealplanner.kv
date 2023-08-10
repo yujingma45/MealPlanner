@@ -26,50 +26,62 @@
             padding: dp(15)
 
             MDRaisedButton:
-                text: 'Meal Plan'
+                text: '当前饮食计划'
+                font_name: "assets/DroidSansFallback.ttf"
                 on_release: app.switch_to_weekly_meal_plan_screen()
                 size_hint_x : .75
                 pos_hint: {'x': .1, 'y': .55} 
-                foreground_color : app.theme_cls.text_color
-                normal_color: app.theme_cls.accent_light
-                font_style: 'H3'
+                md_bg_color :'#581618'
+                text_color: "#F2EDDB"
+                font_style: 'Subtitle1'
                 font_size: dp(22)
 
 
             MDRaisedButton:
-                text: 'Add New Dish'
-                on_release: app.switch_to_new_dish_screen()
+                text: '加入新食谱'
+                font_name: "assets/DroidSansFallback.ttf"
+                on_release: app.switch_to_new_recipe_screen()
                 size_hint_x : .75
                 pos_hint: {'x': .1, 'y': .55}
-                font_style: 'H3'
+                md_bg_color :'#581618'
+                text_color: "#F2EDDB"
+                font_style: 'Subtitle1'
                 font_size: dp(22)
 
             MDRaisedButton:
-                text: 'Dish List'
-                on_release: app.switch_to_dish_list_screen()
+                text: '已有食谱'
+                font_name: "assets/DroidSansFallback.ttf"
+                on_release: app.switch_to_recipes_list_screen()
                 size_hint_x : .75
                 pos_hint: {'x': .1, 'y': .55}
-                font_style: 'H3'
+                md_bg_color :'#581618'
+                text_color: "#F2EDDB"
+                font_style: 'Subtitle1'
                 font_size: dp(22)
 
             MDRaisedButton:
-                text: 'Shopping List'
+                text: u'购物清单'
+                font_name: "assets/DroidSansFallback.ttf"
                 on_release: app.switch_to_shopping_list_screen()
                 size_hint_x : .75
                 pos_hint: {'x': .1, 'y': .55}
-                font_style: 'H3'
+                md_bg_color :'#581618'
+                text_color: "#F2EDDB"
+                font_style: 'Subtitle1'
                 font_size: dp(22)
 
-<DishListScreen>:
-    md_bg_color: "#FBFFF5"  
+<RecipeListScreen>:
+    md_bg_color: "#FFFFFF"  
     
     MDBoxLayout:
         orientation:'vertical'
+
         MDTopAppBar:
-            title:"Dish List"
+            title: 'List of Recipes'
+            font_name: "assets/DroidSansFallback.ttf"
             left_action_items:[["arrow-left", lambda x: app.root.get_screen('title')]] # TODO MODIFY
-            foreground_color : app.theme_cls.text_color
-            normal_color: app.theme_cls.accent_light
+            md_bg_color :'#581618'
+            text_color: "#F2EDDB"
 
     
         MDBoxLayout:
@@ -79,18 +91,30 @@
                 theme_text_color: "Primary"
             MDScrollView:
                 MDGridLayout:
-                    id: dish_grid
+                    id: recipe_grid
                     cols: 1
 
-<NewDishScreen>:
-    BoxLayout:
+<NewRecipeScreen>:
+    md_bg_color: "#FFFFFF"  
+    
+    MDBoxLayout:
         orientation: 'vertical'
+
+        MDTopAppBar:
+            title: 'Add a new recipe'
+            font_name: "assets/DroidSansFallback.ttf"
+            left_action_items:[["arrow-left", lambda x: app.root.get_screen('title')]] # TODO MODIFY
+            md_bg_color :'#581618'
+            text_color: "#F2EDDB"
+
         MDLabel:
-            text: 'Enter Dish Details'
+            text: 'Enter Recipe Details'
             theme_text_color: "Primary"
+
         MDTextField:
-            hint_text: 'Dish Name'
+            hint_text: 'Recipe Name'
             id: dish_name
+
         MDRaisedButton:
             text: 'Add Dish'
             on_release: app.add_dish()
