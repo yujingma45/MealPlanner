@@ -1,0 +1,44 @@
+#:kivy 2.0.0
+
+<TitleScreen>:
+    BoxLayout:
+        orientation: 'vertical'
+        MDLabel:
+            text: 'Welcome to Meal Planner App'
+            theme_text_color: "Primary"
+        MDRaisedButton:
+            text: 'Meal Plan'
+            on_release: app.switch_to_weekly_meal_plan_screen()
+        MDRaisedButton:
+            text: 'Add New Dish'
+            on_release: app.switch_to_new_dish_screen()
+        MDRaisedButton:
+            text: 'Dish List'
+            on_release: app.switch_to_dish_list_screen()
+        MDRaisedButton:
+            text: 'Shopping List'
+            on_release: app.switch_to_shopping_list_screen()
+
+<DishListScreen>:
+    BoxLayout:
+        orientation: 'vertical'
+        MDLabel:
+            text: 'Dish List and Modify'
+            theme_text_color: "Primary"
+        ScrollView:
+            MDGridLayout:
+                id: dish_grid
+                cols: 1
+
+<NewDishScreen>:
+    BoxLayout:
+        orientation: 'vertical'
+        MDLabel:
+            text: 'Enter Dish Details'
+            theme_text_color: "Primary"
+        MDTextField:
+            hint_text: 'Dish Name'
+            id: dish_name
+        MDRaisedButton:
+            text: 'Add Dish'
+            on_release: app.add_dish()
