@@ -1,2 +1,2 @@
 # MealPlanner
-[ ![](./assets/logo.png) ](./assets/logo.png)
+<img src="./assets/logo.png" width="200" />
