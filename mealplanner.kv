@@ -1,34 +1,86 @@
 #:kivy 2.0.0
 
 <TitleScreen>:
-    BoxLayout:
+    md_bg_color: '#FFFFFF'
+
+    MDBoxLayout:
         orientation: 'vertical'
-        MDLabel:
-            text: 'Welcome to Meal Planner App'
-            theme_text_color: "Primary"
-        MDRaisedButton:
-            text: 'Meal Plan'
-            on_release: app.switch_to_weekly_meal_plan_screen()
-        MDRaisedButton:
-            text: 'Add New Dish'
-            on_release: app.switch_to_new_dish_screen()
-        MDRaisedButton:
-            text: 'Dish List'
-            on_release: app.switch_to_dish_list_screen()
-        MDRaisedButton:
-            text: 'Shopping List'
-            on_release: app.switch_to_shopping_list_screen()
+        spacing: dp(30)
+        pos_hint: {'center_x': 0.5, 'center_y': 0.5}
+        padding: dp(20)
+        md_bg_color: "#FFFFFF"
+
+        Image:
+            source: 'assets/logo.png'
+            halign: "center"
+            size_hint_y: None  # Tells the layout to ignore the size_hint in y dir
+            height: dp(400)  # The fixed height you want
+            allow_stretch: True
+            
+    
+        MDGridLayout:
+            cols: 2
+            row_default_height: 20
+            spacing: dp(20)
+            pos_hint: {'center_x': 0.5, 'center_y': 0.5}
+            padding: dp(15)
+
+            MDRaisedButton:
+                text: 'Meal Plan'
+                on_release: app.switch_to_weekly_meal_plan_screen()
+                size_hint_x : .75
+                pos_hint: {'x': .1, 'y': .55} 
+                foreground_color : app.theme_cls.text_color
+                normal_color: app.theme_cls.accent_light
+                font_style: 'H3'
+                font_size: dp(22)
+
+
+            MDRaisedButton:
+                text: 'Add New Dish'
+                on_release: app.switch_to_new_dish_screen()
+                size_hint_x : .75
+                pos_hint: {'x': .1, 'y': .55}
+                font_style: 'H3'
+                font_size: dp(22)
+
+            MDRaisedButton:
+                text: 'Dish List'
+                on_release: app.switch_to_dish_list_screen()
+                size_hint_x : .75
+                pos_hint: {'x': .1, 'y': .55}
+                font_style: 'H3'
+                font_size: dp(22)
+
+            MDRaisedButton:
+                text: 'Shopping List'
+                on_release: app.switch_to_shopping_list_screen()
+                size_hint_x : .75
+                pos_hint: {'x': .1, 'y': .55}
+                font_style: 'H3'
+                font_size: dp(22)
 
 <DishListScreen>:
-    BoxLayout:
-        orientation: 'vertical'
-        MDLabel:
-            text: 'Dish List and Modify'
-            theme_text_color: "Primary"
-        ScrollView:
-            MDGridLayout:
-                id: dish_grid
-                cols: 1
+    md_bg_color: "#FBFFF5"  
+    
+    MDBoxLayout:
+        orientation:'vertical'
+        MDTopAppBar:
+            title:"Dish List"
+            left_action_items:[["arrow-left", lambda x: app.root.get_screen('title')]] # TODO MODIFY
+            foreground_color : app.theme_cls.text_color
+            normal_color: app.theme_cls.accent_light
+
+    
+        MDBoxLayout:
+            orientation: 'vertical'
+            MDLabel:
+                text: 'Dish List and Modify'
+                theme_text_color: "Primary"
+            MDScrollView:
+                MDGridLayout:
+                    id: dish_grid
+                    cols: 1
 
 <NewDishScreen>:
     BoxLayout:

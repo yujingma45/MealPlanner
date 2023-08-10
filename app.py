@@ -3,7 +3,7 @@ from kivymd.app import MDApp
 from kivymd.uix.list import OneLineListItem
 from kivy.uix.screenmanager import ScreenManager, Screen
 from dishes import Dish
-from kivy.config import Config
+from kivymd.theming import ThemeManager
 
 class TitleScreen(Screen):
     pass
@@ -17,6 +17,8 @@ class DishListScreen(Screen):
 class MealPlannerApp(MDApp):
     def __init__(self, **kwargs):
         super().__init__(**kwargs)
+        # self.theme_cls = ThemeManager()  # Initialize ThemeManager
+
         self.conn = sqlite3.connect('mealplanner.db')
         self.cursor = self.conn.cursor()
         self.cursor.execute('''CREATE TABLE IF NOT EXISTS dishes (name TEXT, meal_type TEXT, ingredients TEXT, extra_instructions TEXT)''')
@@ -24,6 +26,10 @@ class MealPlannerApp(MDApp):
         self.dishes = []
 
     def build(self):
+        self.theme_cls.primary_palette = 'Red' #  'Cyan', 'Teal'
+        self.theme_cls.theme_style = "Light"
+        self.theme_cls.material_style = "M3"
+        
         self.screen_manager = ScreenManager()
 
         self.title_screen = TitleScreen(name="title")
