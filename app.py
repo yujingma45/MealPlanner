@@ -21,6 +21,11 @@ class NewRecipeScreen(Screen):
 class RecipeListScreen(Screen):
     pass
 
+
+class MealPlanScreen(Screen):
+    pass 
+
+
 class MealPlannerApp(MDApp):
     def __init__(self, **kwargs):
         super().__init__(**kwargs)
@@ -53,8 +58,19 @@ class MealPlannerApp(MDApp):
 
         self.recipe_list_screen = RecipeListScreen(name="recipe_list")  
         self.screen_manager.add_widget(self.recipe_list_screen) 
+
+        self.meal_plan_screen = MealPlanScreen(name="meal_plan")  
+        self.screen_manager.add_widget(self.meal_plan_screen) 
     
         return self.screen_manager
+    
+    def switch_to_weekly_meal_plan_screen(self):
+        self.root.transition.direction = "left"
+        self.root.current = "meal_plan"
+        self.load_meal_plan_screen()  
+
+    def load_meal_plan_screen(self):
+        pass
     
     def return_to_title(self, *args):
         # Access the `ScreenManager` and change the screen.

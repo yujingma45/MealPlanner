@@ -197,3 +197,111 @@
                     font_style: 'Subtitle1'
                     font_size: dp(22)
                     on_release: app.add_recipe(recipe_name.text, meal_type_button.text, recipe_ingredients.text, recipe_extra_instructions.text)
+
+
+<MealPlanScreen>:
+    MDBoxLayout:
+        orientation: 'vertical'
+
+        MDTopAppBar:
+            title: 'Weekly Meal Plan'
+            left_action_items: [["arrow-left", app.return_to_title]]
+            md_bg_color: '#581618'
+            text_color: "#F2EDDB"
+
+        MDGridLayout:
+            cols: 6
+            padding: dp(20)
+            spacing: dp(10)
+
+            MDLabel:
+                text: 'Meal / Day'
+                font_name: "assets/DroidSansFallback.ttf"
+                theme_text_color: "Secondary"
+
+            MDLabel:
+                text: 'Monday'
+                font_name: "assets/DroidSansFallback.ttf"
+                theme_text_color: "Secondary"
+
+            MDLabel:
+                text: 'Tuesday'
+                font_name: "assets/DroidSansFallback.ttf"
+                theme_text_color: "Secondary"
+
+            MDLabel:
+                text: 'Wednesday'
+                font_name: "assets/DroidSansFallback.ttf"
+                theme_text_color: "Secondary"
+
+            MDLabel:
+                text: 'Thursday'
+                font_name: "assets/DroidSansFallback.ttf"
+                theme_text_color: "Secondary"
+
+            MDLabel:
+                text: 'Friday'
+                font_name: "assets/DroidSansFallback.ttf"
+                theme_text_color: "Secondary"
+
+            MDLabel:
+                text: 'Breakfast'
+                font_name: "assets/DroidSansFallback.ttf"
+                theme_text_color: "Secondary"
+
+            MDTextField:
+                id: mon_breakfast
+
+            MDTextField:
+                id: tue_breakfast
+
+            MDTextField:
+                id: wed_breakfast
+
+            MDTextField:
+                id: thu_breakfast
+
+            MDTextField:
+                id: fri_breakfast
+
+            MDLabel:
+                text: 'Lunch'
+                font_name: "assets/DroidSansFallback.ttf"
+                theme_text_color: "Secondary"
+
+            MDTextField:
+                id: mon_lunch
+
+            MDTextField:
+                id: tue_lunch
+
+            MDTextField:
+                id: wed_lunch
+
+            MDTextField:
+                id: thu_lunch
+
+            MDTextField:
+                id: fri_lunch
+
+            MDLabel:
+                text: 'Dinner'
+                font_name: "assets/DroidSansFallback.ttf"
+                theme_text_color: "Secondary"
+
+            MDTextField:
+                id: mon_dinner
+
+            MDTextField:
+                id: tue_dinner
+
+            MDTextField:
+                id: wed_dinner
+
+            MDTextField:
+                id: thu_dinner
+
+            MDTextField:
+                id: fri_dinner
+
+          
