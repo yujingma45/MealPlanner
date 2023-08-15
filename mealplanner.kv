@@ -79,10 +79,9 @@
         MDTopAppBar:
             title: 'List of Recipes'
             font_name: "assets/DroidSansFallback.ttf"
-            left_action_items:[["arrow-left", lambda x: app.root.get_screen('title')]] # TODO MODIFY
+            left_action_items:[["arrow-left", app.return_to_title]]
             md_bg_color :'#581618'
             text_color: "#F2EDDB"
-
     
         MDBoxLayout:
             orientation: 'vertical'
@@ -95,7 +94,8 @@
                     cols: 1
 
 <NewRecipeScreen>:
-    md_bg_color: "#FFFFFF"  
+    md_bg_color: "#FFFFFF" 
+    
     
     MDBoxLayout:
         orientation: 'vertical'
@@ -103,18 +103,97 @@
         MDTopAppBar:
             title: 'Add a new recipe'
             font_name: "assets/DroidSansFallback.ttf"
-            left_action_items:[["arrow-left", lambda x: app.root.get_screen('title')]] # TODO MODIFY
+            left_action_items:[["arrow-left", app.return_to_title]]
             md_bg_color :'#581618'
             text_color: "#F2EDDB"
+        
+        MDBoxLayout:
+            orientation: 'vertical'
+            spacing: dp(15)
+            pos_hint: {'center_x': 0.5, 'center_y': 0.5}
+            padding: dp(10)
+            size_hint: 0.8, 0.8
+            spacing: dp(8)
 
-        MDLabel:
-            text: 'Enter Recipe Details'
-            theme_text_color: "Primary"
+            MDLabel:
+                text: u'加入新食谱'
+                font_name: "assets/DroidSansFallback.ttf"
+                valign: "center"
+                halign: 'auto'
+                spacing: "0dp"
+                font_size: dp(32)
+                theme_text_color: "Primary"
 
-        MDTextField:
-            hint_text: 'Recipe Name'
-            id: dish_name
+            MDGridLayout:
+                cols: 2
+                adaptive_height: True
+                row_default_height: 60
 
-        MDRaisedButton:
-            text: 'Add Dish'
-            on_release: app.add_dish()
+                MDLabel:
+                    text: u'食谱名'
+                    font_name: "assets/DroidSansFallback.ttf"
+                    theme_text_color: "Secondary"
+                    font_size: dp(22)
+                    
+
+                MDTextField:
+                    id: recipe_name
+                    color_mode: 'accent'
+                    font_name: "assets/DroidSansFallback.ttf"
+                    font_size: dp(22)
+
+
+                MDLabel:
+                    text: u'食材（空格分割）'
+                    font_name: "assets/DroidSansFallback.ttf"
+                    multiline: True
+                    theme_text_color: "Secondary"
+                    font_size: dp(22)
+
+                MDTextField:
+                    id: recipe_ingredients
+                    color_mode: 'accent'
+                    font_name: "assets/DroidSansFallback.ttf"
+                    font_size: dp(22)
+
+                MDLabel:
+                    text: u'食谱类型'
+                    font_name: "assets/DroidSansFallback.ttf"
+                    theme_text_color: "Secondary"
+                    font_size: dp(22)
+
+                MDRoundFlatButton:
+                    id: meal_type_button
+                    text:u"无限制"
+                    font_name: "assets/DroidSansFallback.ttf"
+                    text_color: '#581618'
+                    on_release: app.meal_type_menu.open()
+                    font_size: dp(22)
+                    line_color: '#581618'
+
+                MDLabel:
+                    text: u'备注 (选填)'
+                    font_name: "assets/DroidSansFallback.ttf"
+                    theme_text_color: "Secondary"
+                    font_size: dp(22)
+
+                MDTextField:
+                    id: recipe_extra_instructions
+                    font_name: "assets/DroidSansFallback.ttf"
+                    color_mode: 'accent'
+                    font_size: dp(22)
+
+                MDLabel:
+                    id: error_label
+                    text: ''
+                    theme_text_color: "Error"
+                    font_size: dp(22)
+
+                MDRaisedButton:
+                    text: u'确认'
+                    font_name: "assets/DroidSansFallback.ttf"
+                    md_bg_color :'#581618'
+                    text_color: "#F2EDDB"
+                    font_style: 'Subtitle1'
+                    font_size: dp(22)
+                    on_release: app.add_recipe(recipe_name.text, meal_type_button.text, recipe_ingredients.text, recipe_extra_instructions.text)

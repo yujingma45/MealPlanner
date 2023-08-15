@@ -1,7 +1,7 @@
 
 # may add a class for gredient, so some gredient can alter users to prepare earlier 
 class Recipe:
-    def __init__(self, name, meal_type, ingredients, extra_instructions= ''):
+    def __init__(self, name, ingredients, meal_type, extra_instructions= ''):
         self._name = name
         self._meal_type = meal_type 
         self._ingredients = ingredients #.split(',') we don't split here, it will be easier to store in db
